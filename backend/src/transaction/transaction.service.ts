@@ -7,6 +7,8 @@ import { Transaction } from './entities/transaction.entity';
 export class TransactionService {
   private readonly logger = new Logger(TransactionService.name);
 
+  private transactions: Transaction[] = [];
+
   constructor(private readonly exchangeService: ExchangeService) {}
 
   async create(dto: CreateTransactionDto): Promise<Transaction> {
@@ -19,6 +21,7 @@ export class TransactionService {
       timestamp: new Date(),
     };
 
+    this.transactions.push(transaction);
     this.logger.log(
       `Transaction created: ${dto.amount} EUR to ${transaction.amountPLN.toFixed(2)} PLN`,
     );
