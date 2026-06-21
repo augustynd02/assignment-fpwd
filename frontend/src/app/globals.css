@@ -1,34 +1,17 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-background: rgb(29, 29, 29);
+  --color-text: rgb(243, 243, 243);
+  --color-primary: rgb(121, 54, 160);
+  --color-primary-action: rgb(145, 75, 185);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 2rem;
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /*
+    from layout:
+    --font-primary: Raleway;
+  */
 }
 
 * {
@@ -37,13 +20,17 @@ body {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html,
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-primary);
+
+  display: flex;
+  flex-direction: column;
 }
