@@ -1,4 +1,4 @@
-import { Injectable, Inject, ServiceUnavailableException } from '@nestjs/common';
+import { Injectable, Inject, Logger, ServiceUnavailableException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
@@ -23,6 +23,8 @@ const CACHE_TTL = 60 * 1000;
 
 @Injectable()
 export class ExchangeService {
+  private readonly logger = new Logger(ExchangeService.name);
+  
   constructor(
     private readonly httpService: HttpService,
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
@@ -56,6 +58,7 @@ export class ExchangeService {
       );
       rate = response.data.exchange_rate;
     } catch (error) {
+      this.logger.error('Failed to fetch exchange rate from provider', error);
       throw new ServiceUnavailableException(
         'Could not retrieve exchange rate. Please try again later.',
       );
