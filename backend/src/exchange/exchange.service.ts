@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import { Cache } from 'cache-manager';
+import type { Cache } from 'cache-manager';
 
 type RateType = {
   rate: number;
@@ -24,7 +24,7 @@ const CACHE_TTL = 60 * 1000;
 @Injectable()
 export class ExchangeService {
   private readonly logger = new Logger(ExchangeService.name);
-  
+
   constructor(
     private readonly httpService: HttpService,
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
