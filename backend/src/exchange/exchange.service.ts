@@ -11,13 +11,14 @@ type RateType = {
 };
 
 type ExchangeRateResponse = {
+  fromCache: boolean;
   data: {
     rate: number;
     secondsLeft: number;
   };
 };
 
-const CACHE_KEY = 'exchange_rate';
+const CACHE_KEY = 'rate';
 const CACHE_TTL = 60 * 1000;
 
 @Injectable()
@@ -35,6 +36,7 @@ export class ExchangeService {
       const secondsLeft = Math.max(0, 60 - Math.floor(dataAge / 1000));
 
       return {
+        fromCache: true,
         data: {
           rate: cachedData.rate,
           secondsLeft,
@@ -63,6 +65,7 @@ export class ExchangeService {
     await this.cacheManager.set(CACHE_KEY, { rate, timestamp }, CACHE_TTL);
 
     return {
+      fromCache: false,
       data: {
         rate,
         secondsLeft: 60,
