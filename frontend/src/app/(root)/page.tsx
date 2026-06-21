@@ -24,7 +24,7 @@ export default async function Home() {
 				<h1>Exchange <span className={styles.euro}>EUR</span> to <span className={styles.pln}>PLN</span></h1>
 				<div className={styles.rateInfo}>
 					<p className={styles.rate}>Current exchange rate: <span>{exchangeRate.data.rate}</span></p>
-					<ExchangeTimer initialSeconds={exchangeRate.data.secondsLeft} />
+					<ExchangeTimer key={Date.now()} initialSeconds={exchangeRate.data.secondsLeft} />
 				</div>
 				<ExchangeForm />
 			</div>
