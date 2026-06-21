@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Space+Mono:wght@400;700&display=swap');
+
+.homepage {
+    height: 100vh;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-medium);
+
+    --board-bg: #15171c;
+    --board-frame: #2b2e34;
+    --led-purple: #9f0ef3;
+    --led-purple-soft: rgba(152, 95, 185, 0.4);
+    --eur-blue: #5b86c9;
+    --pln-red: #d65a61;
+    --white: #f4f1ea;
+    --text-muted: #82858c;
+
+    background-color: #0c0d10;
+    background-image: linear-gradient(var(--board-frame) 1px, transparent 1px),
+        linear-gradient(90deg, var(--board-frame) 1px, transparent 1px);
+    background-size: 24px 24px;
+
+    .mainContainer {
+        position: relative;
+        background: var(--board-bg);
+        border: 1px solid var(--board-frame);
+        border-radius: 6px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+        padding: 3.5rem 3.5rem 3rem;
+        width: min(480px, 100%);
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--eur-blue) 50%, var(--pln-red) 50%);
+        }
+    }
+
+    .eyebrow {
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin: 0 0 1.25rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--white);
+    }
+
+    .euro {
+        color: var(--eur-blue);
+        font-weight: 700;
+    }
+
+    .pln {
+        color: var(--pln-red);
+        font-weight: 700;
+    }
+
+    .rateInfo {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);
+
+        text-align: center;
+        margin-top: 1.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px dashed var(--board-frame);
+
+        .rate {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+
+            span {
+                display: block;
+                margin-top: 0.35rem;
+                font-family: 'Space Mono', monospace;
+                font-weight: 700;
+                font-size: 3rem;
+                letter-spacing: 0.04em;
+                color: var(--led-purple);
+                text-shadow: 0 0 14px var(--led-purple-soft);
+            }
+        }
+    }
+
+    .errorMessage {
+        max-width: 360px;
+        text-align: center;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--pln-red);
+        border-radius: 4px;
+        padding: 1rem 1.25rem;
+    }
+}

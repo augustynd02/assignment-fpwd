@@ -1,0 +1,11 @@
+.timer {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+
+    span {
+        color: var(--led-purple);
+        font-weight: 700;
+    }
+}
